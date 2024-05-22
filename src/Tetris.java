@@ -2,6 +2,9 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.Timer;
 
@@ -546,9 +549,11 @@ class Tetris extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         JButton startBtn = new JButton("Start");
-        JLabel img = new JLabel(new ImageIcon(new ImageIcon(".\\img\\logo.png").getImage().getScaledInstance(450, 225, Image.SCALE_SMOOTH)));
+        String imgPath = URLDecoder.decode(rootPath + "\\tetris\\src\\img\\logo.png", StandardCharsets.UTF_8);
+        JLabel img = new JLabel(new ImageIcon(new ImageIcon(imgPath).getImage().getScaledInstance(450, 225, Image.SCALE_SMOOTH)));
 
         StartGUi() {
+            System.out.println(imgPath);
             frame.setSize(new Dimension(750, 500));
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
@@ -589,9 +594,15 @@ class Tetris extends JFrame {
 
         
     }
+    
+    public static String rootPath = new File(Tetris.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getParent();
 
     // run the game from here
     public static void main(String[] args) {
+
+        System.out.println(rootPath);
+        System.out.println(rootPath + "\\img\\logo.png");
+        System.out.println();
 
         EventQueue.invokeLater(() -> {
             new StartGUi();
