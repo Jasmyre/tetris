@@ -549,7 +549,7 @@ class Tetris extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         JButton startBtn = new JButton("Start");
-        String imgPath = URLDecoder.decode(rootPath + "\\tetris-main\\src\\img\\logo.png", StandardCharsets.UTF_8);
+        String imgPath = URLDecoder.decode(rootPath + "\\tetris\\src\\img\\logo.png", StandardCharsets.UTF_8);
         JLabel img = new JLabel(new ImageIcon(new ImageIcon(imgPath).getImage().getScaledInstance(450, 225, Image.SCALE_SMOOTH)));
 
         StartGUi() {
