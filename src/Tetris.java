@@ -549,11 +549,10 @@ class Tetris extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         JButton startBtn = new JButton("Start");
-        String imgPath = URLDecoder.decode(rootPath + "\\tetris\\src\\img\\logo.png", StandardCharsets.UTF_8);
+        String imgPath = rootPath + "\\src\\img\\logo.png"; // path for the logo image
         JLabel img = new JLabel(new ImageIcon(new ImageIcon(imgPath).getImage().getScaledInstance(450, 225, Image.SCALE_SMOOTH)));
 
         StartGUi() {
-            System.out.println(imgPath);
             frame.setSize(new Dimension(750, 500));
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
@@ -595,14 +594,11 @@ class Tetris extends JFrame {
         
     }
     
-    public static String rootPath = new File(Tetris.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getParent();
+    // get the path of the roo
+    public static String rootPath = URLDecoder.decode(new File(Tetris.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent(), StandardCharsets.UTF_8);
 
     // run the game from here
     public static void main(String[] args) {
-
-        System.out.println(rootPath);
-        System.out.println(rootPath + "\\img\\logo.png");
-        System.out.println();
 
         EventQueue.invokeLater(() -> {
             new StartGUi();
